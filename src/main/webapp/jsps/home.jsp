@@ -9,8 +9,8 @@
 </head>
 </head>
 <body>
-<h1 align="center">Application Deployed by Sonali</h1>
-<h1 align="center"> My talent</h1>
+<h1 align="center">Hi Vinay Waste fellow </h1>
+<h1 align="center"> How are u re</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
