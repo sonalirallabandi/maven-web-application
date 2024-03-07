@@ -9,7 +9,7 @@
 </head>
 </head>
 <body>
-<h1 align="center">Hi Vinay Waste fellow </h1>
+<h1 align="center">Hi Waste fellow </h1>
 <h1 align="center"> How are u re</h1>
 <hr>
 <br>
