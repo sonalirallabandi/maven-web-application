@@ -1,75 +1,60 @@
 <!--
 /******************************************************************************
-*	Program Author: Dr. Yongming Tang for CSCI 6810 Java and the Internet *
-*	Date: September, 2012						      *
+*	Program Author: Dr. Yongming Tang for CSCI 6810 Java and the Internet	  *
+*	Date: September, 2012													  *
 *******************************************************************************/
 -->
 
-<%@ page import="java.io.*" %>
-<%@ page import="java.util.*" %>
-<%@ page import="java.lang.*" %>
-<%@ page import="com.mishra.*;" %>
+<HTML>
+<HEAD>
+<TITLE>Sign Up</TITLE>
+</HEAD>
+<BODY BGCOLOR="WHITE">
 
-<%
-	String Username = new String("");
-	String Password = new String("");
-	String Re_enterPassword = new String("");
-	String FullName = new String("");
-	
-	Username = request.getParameter( "UsernameField" );
-	Password = request.getParameter( "PasswordField" );
-        Re_enterPassword = request.getParameter( "RePasswordField" );
-        FullName = request.getParameter( "NameField" );
-              
-        Account Acct = new Account(Username, Password, Re_enterPassword, FullName);
-%>
-<%
-	if (!Acct.signUp())
-            out.println("Account creation failed because of existing username or invalid username. Please try again!");
-        else { 
-%>
+<h3>Welcome to our online registration!</h3><br>
 
-		<HTML><HEAD></HEAD>
-		<BODY bgcolor='#F1F1FD'>
-		<h4 ALIGN='center'>Congratulations! You have an account with us. Thank you! You can login now.</h4>
-		<FORM NAME="LoginPage" ACTION="/OnlineLoginServlet" METHOD ="POST">
-		<TABLE cellPadding='3' ALIGN='center'>
-		<TR bgcolor='#ECFAEB'>
-		<TD>USERNAME:</TD>
-		<TD>
-		<INPUT TYPE='text' NAME='UserName' Value='<%= Username %>' SIZE='15' focused>
-		</TD>
-		</TR>
-		<TR bgcolor='#ECFAEB'>
-		<TD>PASSWORD:</TD>
-		<TD>
-		<INPUT TYPE='password' NAME='PassWord' Value='' SIZE='15'>
-		<INPUT TYPE='button' NAME='submitBTN' VALUE='Login' onClick="checkInputs()">
-		</TD>
-		</TR>
-		</TABLE>
-		</FORM>
-		</BODY>
-		<SCRIPT LANGUAGE="JavaScript"> 
-		function checkInputs()
-		{
-		var Prompts = "";
-		Username = window.document.LoginPage.UserName.value;
-		Password = window.document.LoginPage.PassWord.value;
-		if (Username == "" || Password == "") {
-		if (Username == "")
-		Prompts +="Please enter your username!\n";
-		if (Password == "")
-		Prompts +="Please enter your password!\n";
-		if (Prompts != "")
-		window.alert(Prompts);
-		} else {
-		document.LoginPage.submit();
-		}
-		}
-		</SCRIPT>
-		</HTML>
+<FORM NAME="SignUpPage" ACTION=" /CSCI6810/SignUp.jsp" METHOD ="post"> <!-- /OnlineSignUpServlet-->
+<table>
+<tr><td>Username:</td><td><INPUT TYPE="TEXT" NAME="UsernameField" SIZE=20></td></tr>
+<tr><td>Password:</td><td><INPUT TYPE="PASSWORD" NAME="PasswordField" SIZE=20></td></tr>
+<tr><td>Re-enter Password:</td><td><INPUT TYPE="PASSWORD" NAME="RePasswordField" SIZE=20></td></tr>
+<tr><td>Name:</td><td><INPUT TYPE="TEXT" NAME="NameField" SIZE=20></td></tr>
+</table>
 
-<%		}
-%>
- 
+<P>
+<INPUT TYPE="BUTTON" VALUE="Register" onClick="checkInputs()">
+<INPUT TYPE="RESET" VALUE="Reset">
+</P>
+<A HREF='/CSCI6810/Withdraw.jsp?UserID=someone@yahoo.com'>Withdraw</A>
+</FORM>
+</BODY>
+</HTML>
+
+<SCRIPT LANGUAGE="JavaScript">
+document.SignUpPage.UsernameField.focus();
+   function checkInputs()
+   {
+       var Prompts = "";
+       Username = window.document.SignUpPage.UsernameField.value;
+       Password = document.SignUpPage.PasswordField.value;
+       RePassword = SignUpPage.RePasswordField.value;
+       Name = SignUpPage.NameField.value;
+       if (Username == "" || Password == "" || RePassword == "" || Name == "") {
+          if (Username == "")
+             Prompts +="Please enter your username!\n";
+          if (Password == "")
+             Prompts +="Please enter your password!\n";
+          if (RePassword == "")
+             Prompts +="Please re-enter your password!\n";
+          if (Name == "")
+             Prompts +="Please enter your name!\n";
+          if (Prompts != "")
+             window.alert(Prompts);
+       } else if (RePassword != Password) {
+             window.alert("Your entered passwords are not same. Please enter the same one!");
+       }else {
+          document.SignUpPage.submit();
+       }
+   }
+
+</SCRIPT>
