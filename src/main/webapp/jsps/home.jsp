@@ -9,8 +9,8 @@
 </head>
 </head>
 <body>
-<h1 align="center">Hi Waste fellow </h1>
-<h1 align="center"> How are u re</h1>
+<h1 align="center">Learning</h1>
+<h1 align="center"> DEvops tools</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
