@@ -1,50 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.net.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MithunTechnologies- Home Page</title>
-<link href="images/mithunlogo.jpg" rel="icon">
-</head>
-</head>
-<body>
-<h1 align="center">Hi Waste fellow </h1>
-<h1 align="center"> How are u re</h1>
-<hr>
-<br>
-	<h1><h3> Server Side IP Address </h3><br>
+<!--
+/******************************************************************************
+*	Program Author: Dr. Yongming Tang for CSCI 6810 Java and the Internet *
+*	Date: September, 2012						      *
+*******************************************************************************/
+-->
 
-<% 
-String ip = "";
-InetAddress inetAddress = InetAddress.getLocalHost();
-ip = inetAddress.getHostAddress();
-out.println("Server Host Name :: "+inetAddress.getHostName()); 
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.lang.*" %>
+<%@ page import="com.mishra.*;" %>
+
+<%
+	String Username = new String("");
+	String Password = new String("");
+	String Re_enterPassword = new String("");
+	String FullName = new String("");
+	
+	Username = request.getParameter( "UsernameField" );
+	Password = request.getParameter( "PasswordField" );
+        Re_enterPassword = request.getParameter( "RePasswordField" );
+        FullName = request.getParameter( "NameField" );
+              
+        Account Acct = new Account(Username, Password, Re_enterPassword, FullName);
 %>
-<br>
-<%out.println("Server IP Address :: "+ip);%>
-</h1>
-<br>
-<h1><h3> Client Side IP Address </h3><br>
-<%out.print( "Client IP Address :: " + request.getRemoteAddr() ); %><br>
-<%out.print( "Client Name Host :: "+ request.getRemoteHost() );%><br></h1>
-<hr>
-<div style="text-align: center;">
-	<span>
-		<img src="images/mithunlogo.jpg" alt="" width="100">
-	</span>
-	<span style="font-weight: bold;">
-		Used maven.
-		<br>
-		<a href="mailto:devopstrainingblr@gmail.com">Mail to Mithun Technologies</a>
-	</span>
-</div>
-<hr>
-	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
-<hr>
-<hr>
-<p align=center>Mithun Technologies - Consultant, Training, Development Center.</p>
-<p align=center><small>Copyrights 2022 by <a href="http://mithuntechnologies.com/">Mithun Technologies,Bengaluru</a> </small></p>
+<%
+	if (!Acct.signUp())
+            out.println("Account creation failed because of existing username or invalid username. Please try again!");
+        else { 
+%>
 
-</body>
-</html>
+		<HTML><HEAD></HEAD>
+		<BODY bgcolor='#F1F1FD'>
+		<h4 ALIGN='center'>Congratulations! You have an account with us. Thank you! You can login now.</h4>
+		<FORM NAME="LoginPage" ACTION="/OnlineLoginServlet" METHOD ="POST">
+		<TABLE cellPadding='3' ALIGN='center'>
+		<TR bgcolor='#ECFAEB'>
+		<TD>USERNAME:</TD>
+		<TD>
+		<INPUT TYPE='text' NAME='UserName' Value='<%= Username %>' SIZE='15' focused>
+		</TD>
+		</TR>
+		<TR bgcolor='#ECFAEB'>
+		<TD>PASSWORD:</TD>
+		<TD>
+		<INPUT TYPE='password' NAME='PassWord' Value='' SIZE='15'>
+		<INPUT TYPE='button' NAME='submitBTN' VALUE='Login' onClick="checkInputs()">
+		</TD>
+		</TR>
+		</TABLE>
+		</FORM>
+		</BODY>
+		<SCRIPT LANGUAGE="JavaScript"> 
+		function checkInputs()
+		{
+		var Prompts = "";
+		Username = window.document.LoginPage.UserName.value;
+		Password = window.document.LoginPage.PassWord.value;
+		if (Username == "" || Password == "") {
+		if (Username == "")
+		Prompts +="Please enter your username!\n";
+		if (Password == "")
+		Prompts +="Please enter your password!\n";
+		if (Prompts != "")
+		window.alert(Prompts);
+		} else {
+		document.LoginPage.submit();
+		}
+		}
+		</SCRIPT>
+		</HTML>
+
+<%		}
+%>
+ 
