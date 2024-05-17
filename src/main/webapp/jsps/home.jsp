@@ -1,60 +1,50 @@
-<!--
-/******************************************************************************
-*	Program Author: Dr. Yongming Tang for CSCI 6810 Java and the Internet	  *
-*	Date: September, 2012													  *
-*******************************************************************************/
--->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.net.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MithunTechnologies- Home Page</title>
+<link href="images/mithunlogo.jpg" rel="icon">
+</head>
+</head>
+<body>
+<h1 align="center">Learning</h1>
+<h1 align="center"> DEvops tools</h1>
+<hr>
+<br>
+	<h1><h3> Server Side IP Address </h3><br>
 
-<HTML>
-<HEAD>
-<TITLE>Sign Up</TITLE>
-</HEAD>
-<BODY BGCOLOR="WHITE">
+<% 
+String ip = "";
+InetAddress inetAddress = InetAddress.getLocalHost();
+ip = inetAddress.getHostAddress();
+out.println("Server Host Name :: "+inetAddress.getHostName()); 
+%>
+<br>
+<%out.println("Server IP Address :: "+ip);%>
+</h1>
+<br>
+<h1><h3> Client Side IP Address </h3><br>
+<%out.print( "Client IP Address :: " + request.getRemoteAddr() ); %><br>
+<%out.print( "Client Name Host :: "+ request.getRemoteHost() );%><br></h1>
+<hr>
+<div style="text-align: center;">
+	<span>
+		<img src="images/mithunlogo.jpg" alt="" width="100">
+	</span>
+	<span style="font-weight: bold;">
+		Used maven.
+		<br>
+		<a href="mailto:devopstrainingblr@gmail.com">Mail to Mithun Technologies</a>
+	</span>
+</div>
+<hr>
+	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
+<hr>
+<hr>
+<p align=center>Mithun Technologies - Consultant, Training, Development Center.</p>
+<p align=center><small>Copyrights 2022 by <a href="http://mithuntechnologies.com/">Mithun Technologies,Bengaluru</a> </small></p>
 
-<h3>Welcome to our online registration!</h3><br>
-
-<FORM NAME="SignUpPage" ACTION=" /CSCI6810/SignUp.jsp" METHOD ="post"> <!-- /OnlineSignUpServlet-->
-<table>
-<tr><td>Username:</td><td><INPUT TYPE="TEXT" NAME="UsernameField" SIZE=20></td></tr>
-<tr><td>Password:</td><td><INPUT TYPE="PASSWORD" NAME="PasswordField" SIZE=20></td></tr>
-<tr><td>Re-enter Password:</td><td><INPUT TYPE="PASSWORD" NAME="RePasswordField" SIZE=20></td></tr>
-<tr><td>Name:</td><td><INPUT TYPE="TEXT" NAME="NameField" SIZE=20></td></tr>
-</table>
-
-<P>
-<INPUT TYPE="BUTTON" VALUE="Register" onClick="checkInputs()">
-<INPUT TYPE="RESET" VALUE="Reset">
-</P>
-<A HREF='/CSCI6810/Withdraw.jsp?UserID=someone@yahoo.com'>Withdraw</A>
-</FORM>
-</BODY>
-</HTML>
-
-<SCRIPT LANGUAGE="JavaScript">
-document.SignUpPage.UsernameField.focus();
-   function checkInputs()
-   {
-       var Prompts = "";
-       Username = window.document.SignUpPage.UsernameField.value;
-       Password = document.SignUpPage.PasswordField.value;
-       RePassword = SignUpPage.RePasswordField.value;
-       Name = SignUpPage.NameField.value;
-       if (Username == "" || Password == "" || RePassword == "" || Name == "") {
-          if (Username == "")
-             Prompts +="Please enter your username!\n";
-          if (Password == "")
-             Prompts +="Please enter your password!\n";
-          if (RePassword == "")
-             Prompts +="Please re-enter your password!\n";
-          if (Name == "")
-             Prompts +="Please enter your name!\n";
-          if (Prompts != "")
-             window.alert(Prompts);
-       } else if (RePassword != Password) {
-             window.alert("Your entered passwords are not same. Please enter the same one!");
-       }else {
-          document.SignUpPage.submit();
-       }
-   }
-
-</SCRIPT>
+</body>
+</html>
