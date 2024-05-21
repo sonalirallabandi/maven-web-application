@@ -43,7 +43,7 @@ out.println("Server Host Name :: "+inetAddress.getHostName());
 	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
 <hr>
 <hr>
-<p align=center>Mithun Technologies - Consultant, Training, Development Center.</p>
+<p align=center><div class="tenor-gif-embed" data-postid="24714991" data-share-method="host" data-aspect-ratio="1.77778" data-width="50%"><a href="https://tenor.com/view/troop-originals-telugu-memes-brahmi-brahmi-templates-brahmi-memes-gif-24714991">Troop Originals Telugu Memes GIF</a>from <a href="https://tenor.com/search/troop+originals-gifs">Troop Originals GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script></p>
 <p align=center><small>Copyrights 2022 by <a href="http://mithuntechnologies.com/">Mithun Technologies,Bengaluru</a> </small></p>
 
 </body>
